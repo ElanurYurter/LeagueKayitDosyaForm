@@ -51,6 +51,7 @@
             this.lb_karakterler.Name = "lb_karakterler";
             this.lb_karakterler.Size = new System.Drawing.Size(342, 340);
             this.lb_karakterler.TabIndex = 23;
+            this.lb_karakterler.DoubleClick += new System.EventHandler(this.lb_karakterler_DoubleClick);
             // 
             // pictureBox1
             // 

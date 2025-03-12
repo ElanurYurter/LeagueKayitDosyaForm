@@ -20,6 +20,7 @@ namespace LeagueKayitDosyaForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             cb_koridor.Items.Add("Üst");
             cb_koridor.Items.Add("Orta");
             cb_koridor.Items.Add("Alt");
@@ -31,6 +32,8 @@ namespace LeagueKayitDosyaForm
             cb_rol.Items.Add("Büyücü");
             cb_rol.Items.Add("Tank");
             cb_rol.Items.Add("Suikastçı");
+
+            DosyalarıGetir();
         }
 
         private void btn_kaydet_Click(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace LeagueKayitDosyaForm
                 yazici.WriteLine(cb_koridor.Text);
                 yazici.WriteLine(cb_rol.Text);
                 yazici.WriteLine(tb_aciklama.Text);
+                yazici.Close();
             }
             else
             {
@@ -60,6 +64,18 @@ namespace LeagueKayitDosyaForm
                 string dosyaadi = item.Name;
                 lb_karakterler.Items.Add(dosyaadi.Substring(0, dosyaadi.Length - 4));
             }
+        }
+
+        private void lb_karakterler_DoubleClick(object sender, EventArgs e)
+        {
+            string secilen =lb_karakterler.SelectedItem.ToString();
+            string adres = "Karakterler/" + secilen + ".txt";
+            StreamReader sr = new StreamReader(adres);
+            tb_isim.Text = sr.ReadLine();
+            cb_koridor.SelectedText = sr.ReadLine();
+            cb_rol.SelectedText = sr.ReadLine();
+            tb_aciklama.SelectedText = sr.ReadLine();
+
         }
     }
 }
